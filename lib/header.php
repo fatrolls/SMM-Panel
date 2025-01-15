@@ -92,8 +92,8 @@ require 'csrf_token.php';
 									<img src="<?php echo $config['web']['base_url'] ?>assets/images/profile.png" alt="user" class="rounded-circle"> <span class="ml-1 pro-user-name"><?php echo $login['username'] ?> <i class="mdi mdi-chevron-down"></i> </span> </span>
 								</a>
 								<div class="dropdown-menu dropdown-menu-right profile-dropdown">
-									<a href="<?php echo $config['web']['base_url'] ?>user/settings" class="dropdown-item notify-item"><i class="fa fa-gear fa-fw"></i> <span>Account Settings</span></a>
-									<a href="<?php echo $config['web']['base_url'] ?>logout" class="dropdown-item notify-item"><i class="fa fa-sign-out fa-fw"></i> <span>Keluar</span></a>
+									<a href="<?php echo $config['web']['base_url'] ?>user/settings.php" class="dropdown-item notify-item"><i class="fa fa-gear fa-fw"></i> <span>Account Settings</span></a>
+									<a href="<?php echo $config['web']['base_url'] ?>logout.php" class="dropdown-item notify-item"><i class="fa fa-sign-out fa-fw"></i> <span>Logout</span></a>
 								</div>
 							</li>
 							<?php 
@@ -146,7 +146,7 @@ if ($login['level'] == 'Admin') {
 								<li class="has-submenu">
 									<a href="#"><i class="fa fa-whatsapp"></i></i>Tickets</a>
 									<ul class="submenu">
-										<li><a href="/ticket/">Tickets</a></li>
+										<li><a href="<?php echo $config['web']['base_url'] ?>ticket/">Tickets</a></li>
 									</ul>
 								</li>
 								<li>

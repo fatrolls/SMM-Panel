@@ -23,7 +23,7 @@ $new_query = $query_list." LIMIT $starting_position, $records_per_page";
 $new_query = mysqli_query($db, $new_query); 
 // 
 if (isset($_POST['add'])) {
-	$input_name = array('level', 'username', 'password', 'full_name', 'balance');
+	$input_name = array('level', 'username', 'password', 'full_name', 'email', 'balance');
 	if (check_input($_POST, $input_name) == false) {
 		$_SESSION['result'] = array('alert' => 'danger', 'title' => 'Fail!', 'msg' => 'Input is incorrect.');
 	} else {
@@ -32,6 +32,7 @@ if (isset($_POST['add'])) {
 			'username' => trim($_POST['username']),
 			'password' => trim($_POST['password']),
 			'full_name' => $_POST['full_name'],
+			'email' =>  $_POST['email']
 		);
 		if (check_empty($validation) == true) {
 			$_SESSION['result'] = array('alert' => 'danger', 'title' => 'Fail!', 'msg' => 'Input cannot be empty.');
@@ -41,18 +42,23 @@ if (isset($_POST['add'])) {
 			$_SESSION['result'] = array('alert' => 'danger', 'title' => 'Fail!', 'msg' => 'Password must be at least 5 characters.');
 		} elseif (in_array($validation['level'], array('Member','Reseller','Admin')) == false) {
 			$_SESSION['result'] = array('alert' => 'danger', 'title' => 'Fail!', 'msg' => 'Incorrect access rights.');
+		} else if (!filter_var($validation['email'], FILTER_VALIDATE_EMAIL)) {
+			$_SESSION['result'] = array('alert' => 'danger', 'title' => 'Fail!', 'msg' => 'Invalid email.');
 		} else {
 			$input_post = array(
 				'level' => $_POST['level'],
 				'username' => strtolower(trim($_POST['username'])),
 				'password' => password_hash(trim($_POST['password']), PASSWORD_DEFAULT),
 				'full_name' => $_POST['full_name'],
+				'email' => $_POST['email'],
 				'balance' => $_POST['balance'],
 				'api_key' => str_rand(30),
 				'created_at' => date('Y-m-d H:i:s')
 			);
 			if ($model->db_query($db, "username", "users", "username = '".$input_post['username']."'")['count'] > 0) {
 				$_SESSION['result'] = array('alert' => 'danger', 'title' => 'Fail!', 'msg' => 'Username is already registered.');
+			} else if ($model->db_query($db, "email", "users", "email = '".mysqli_real_escape_string($db, $input_post['email'])."'")['count'] > 0) {
+				$_SESSION['result'] = array('alert' => 'danger', 'title' => 'Fail!', 'msg' => 'Email is already registered.');
 			} else {
 				if ($model->db_insert($db, "users", $input_post) == true) {
 					$_SESSION['result'] = array('alert' => 'success', 'title' => 'Succeed!', 'msg' => 'Add data successful.');
@@ -64,23 +70,27 @@ if (isset($_POST['add'])) {
 		}
 	}
 } else if (isset($_POST['edit'])) {
-	$input_name = array('level', 'password', 'full_name', 'balance');
+	$input_name = array('level', 'password', 'full_name', 'email', 'balance');
 	if (check_input($_POST, $input_name) == false) {
 		$_SESSION['result'] = array('alert' => 'danger', 'title' => 'Fail!', 'msg' => 'Input is incorrect.');
 	} else {
 		$validation = array(
 			'level' => $_POST['level'],
 			'full_name' => $_POST['full_name'],
+			'email' => $_POST['email']
 		);
 		if (check_empty($validation) == true) {
 			$_SESSION['result'] = array('alert' => 'danger', 'title' => 'Fail!', 'msg' => 'Input cannot be empty.');
 		} else if (!empty($_POST['password']) AND strlen($_POST['password']) < 5) {
 			$_SESSION['result'] = array('alert' => 'danger', 'title' => 'Fail!', 'msg' => 'Password must be at least 5 characters.');
+		} else if (!filter_var($validation['email'], FILTER_VALIDATE_EMAIL)) {
+			$_SESSION['result'] = array('alert' => 'danger', 'title' => 'Fail!', 'msg' => 'Invalid email.');
 		} else {
 			if (empty($_POST['password'])) {
 				$input_post = array(
 					'level' => $_POST['level'],
 					'full_name' => $_POST['full_name'],
+					'email' => $_POST['email'],
 					'balance' => $_POST['balance']
 				);
 			} else {
@@ -88,6 +98,7 @@ if (isset($_POST['add'])) {
 					'level' => $_POST['level'],
 					'password' => password_hash(trim($_POST['password']), PASSWORD_DEFAULT),
 					'full_name' => $_POST['full_name'],
+					'email' => $_POST['email'],
 					'balance' => $_POST['balance']
 				);
 			}

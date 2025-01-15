@@ -52,7 +52,7 @@ require '../../lib/header_admin.php';
 										<table class="table table-striped table-bordered table-hover">
 											<tr>
 												<th>TOTAL DEPOSIT</th>
-												<th>TOTAL DEPOSIT DETAINED</th>
+												<th>TOTAL DEPOSIT PENDING</th>
 												<th>TOTAL DEPOSIT SUCCEED</th>
 												<th>TOTAL DEPOSIT FAIL</th>
 											</tr>
@@ -95,7 +95,7 @@ for ($i = 0; $i < count($date_list); $i++) {
 	],
 	xkey: 'y',
 	ykeys: ['a'],
-	labels: ['Pesanan'],
+	labels: ['Order'],
 	lineColors: ['#02c0ce'],
 	gridLineColor: '#eef0f2',
 	pointSize: 0,

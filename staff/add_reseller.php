@@ -7,12 +7,13 @@ if ($login['level'] == 'Member') {
 	exit(header("Location: ".$config['web']['base_url']));
 }
 if ($_POST) {
-	$input_data = array('full_name', 'username', 'password');
+	$input_data = array('full_name', 'email', 'username', 'password');
 	if (check_input($_POST, $input_data) == false) {
 		$_SESSION['result'] = array('alert' => 'danger', 'title' => 'Fail!', 'msg' => 'Input is incorrect.');
 	} else {
 		$validation = array(
 			'full_name' => $_POST['full_name'],
+			'email' => $_POST['email'],
 			'username' => trim($_POST['username']),
 			'password' => trim($_POST['password']),
 		);
@@ -24,18 +25,23 @@ if ($_POST) {
 			$_SESSION['result'] = array('alert' => 'danger', 'title' => 'Fail!', 'msg' => 'Password must be at least 5 characters.');
 		} elseif ($login['balance'] < $config['register']['price']['reseller']) {
 			$_SESSION['result'] = array('alert' => 'danger', 'title' => 'Fail!', 'msg' => 'Your balance is not sufficient to register as a Member.');
+		} else if (!filter_var($validation['email'], FILTER_VALIDATE_EMAIL)) {
+			$_SESSION['result'] = array('alert' => 'danger', 'title' => 'Fail!', 'msg' => 'Invalid email.');
 		} else {
 			$input_post = array(
 				'level' => 'Reseller',
 				'username' => strtolower($validation['username']),
 				'password' => password_hash($validation['password'], PASSWORD_DEFAULT),
 				'full_name' => $_POST['full_name'],
+				'email' => $_POST['email'],
 				'balance' => $config['register']['bonus']['reseller'],
 				'api_key' => str_rand(30),
 				'created_at' => date('Y-m-d H:i:s')
 			);
 			if ($model->db_query($db, "username", "users", "username = '".mysqli_real_escape_string($db, $input_post['username'])."'")['count'] > 0) {
 				$_SESSION['result'] = array('alert' => 'danger', 'title' => 'Fail!', 'msg' => 'Username is already registered.');
+			} else if ($model->db_query($db, "email", "users", "email = '".mysqli_real_escape_string($db, $input_post['email'])."'")['count'] > 0) {
+				$_SESSION['result'] = array('alert' => 'danger', 'title' => 'Fail!', 'msg' => 'Email is already registered.');
 			} else {
 				if ($model->db_insert($db, "users", $input_post) == true) {
 					$model->db_update($db, "users", array('balance' => $login['balance'] - $config['register']['price']['reseller']), "id = '".$login['id']."'");
@@ -61,6 +67,10 @@ require '../lib/header.php';
 	<div class="form-group">
 		<label>Full Name</label>
 		<input type="text" class="form-control" name="full_name">
+	</div>
+	<div class="form-group">
+		<label>Email</label>
+		<input type="text" class="form-control" name="email">
 	</div>
 	<div class="form-group">
 		<label>Username</label>

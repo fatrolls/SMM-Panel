@@ -18,6 +18,10 @@ require '../lib/header.php';
 		<input type="text" class="form-control" name="full_name" value="<?php echo $login['full_name'] ?>">
 	</div>
 	<div class="form-group">
+		<label>Email</label>
+		<input type="text" class="form-control" name="email" value="<?php echo $login['email'] ?>">
+	</div>
+	<div class="form-group">
 		<label>Password</label>
 		<input type="password" class="form-control" name="password"><small class="text-danger">*Password is required to change profile.</small>
 	</div>

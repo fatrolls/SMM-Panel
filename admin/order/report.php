@@ -85,7 +85,7 @@ for ($i = 0; $i < count($date_list); $i++) {
 	],
 	xkey: 'y',
 	ykeys: ['a'],
-	labels: ['Pesanan'],
+	labels: ['Order'],
 	lineColors: ['#02c0ce'],
 	gridLineColor: '#eef0f2',
 	pointSize: 0,

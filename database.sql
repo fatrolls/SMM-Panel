@@ -336,6 +336,7 @@ CREATE TABLE `users` (
   `username` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
   `full_name` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
   `balance` double NOT NULL,
   `level` enum('Member','Reseller','Admin') COLLATE utf8_swedish_ci NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1,

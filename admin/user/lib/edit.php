@@ -37,6 +37,10 @@ if (!isset($_GET['id'])) {
 		<input type="text" class="form-control" name="full_name" value="<?php echo $data_target['rows']['full_name'] ?>">
 	</div>
 	<div class="form-group">
+		<label>Email</label>
+		<input type="text" class="form-control" name="email" value="<?php echo $data_target['rows']['email'] ?>">
+	</div>
+	<div class="form-group">
 		<label>Balance</label>
 		<input type="number" class="form-control" name="balance" value="<?php echo $data_target['rows']['balance'] ?>">
 	</div>

@@ -217,7 +217,7 @@ for ($i = 0; $i < count($date_list); $i++) {
 	],
 	xkey: 'y',
 	ykeys: ['a','b'],
-	labels: ['Pesanan','Deposit'],
+	labels: ['Order','Deposit'],
 	lineColors: ['#02c0ce','#53c68c'],
 	gridLineColor: '#eef0f2',
 	pointSize: 0,

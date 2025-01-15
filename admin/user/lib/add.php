@@ -26,6 +26,10 @@ require '../../../lib/check_session_admin.php';
 		<input type="text" class="form-control" name="full_name">
 	</div>
 	<div class="form-group">
+		<label>Email</label>
+		<input type="text" class="form-control" name="email">
+	</div>
+	<div class="form-group">
 		<label>Balance</label>
 		<input type="number" class="form-control" name="balance" value="0">
 	</div>
