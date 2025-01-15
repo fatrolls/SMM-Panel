@@ -28,7 +28,3 @@ here is a screenshot of the project this
 Thank you!
 please fork this project if necessary
 don't forget to star this repository and also follow my github!
-
-## Documentation
-
-The documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
