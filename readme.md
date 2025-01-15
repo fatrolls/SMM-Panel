@@ -1,34 +1,33 @@
-#ini adalah website smm panel
-sosial media marketing panel
-Bagi yang ingin mengembangkan project ini atau mau menggunakannya.
-silahkan ikuti cara berikut:
+#this is a smm panel website
+social media marketing panel
+For those who want to develop this project or want to use it.
+please follow these steps:
 
-1. Clone project ini
-2. Buat database baru
-3. Import database yang ada di folder database
-4. Setting database di file config.php
-5. Setting base url di file config.php
-6. Setting email di file config.php
-7. Setting api key di file config.php
-8. Setting api secret di file config.php
-9. Setting api callback di file config.php
-10. Setting api redirect di file config.php
+1. Clone this project
+2. Create a new database
+3. Import the database in the database folder
+4. Setting the database in the config.php file
+5. Setting the base url in the config.php file
+6. Setting the email in the config.php file
+7. Setting the api key in the config.php file
+8. Setting the api secret in the config.php file
+9. Setting the api callback in the config.php file
+10. Setting the api redirect in the config.php file
 
-#untuk login admin
-username : admin
-password : 12345
+#for admin login
+username: admin
+password: 12345
 
-#untuk login user
-silahkan ke menu daftar.php
+#for user login
+please go to the daftar.php menu
 
-berikut screenshot dari project ini
+here is a screenshot of the project this
 ![ss1](https://user-images.githubusercontent.com/77620549/211453132-c64f018c-8765-4025-a4f8-097319a22eac.png)
 ![ss2](https://user-images.githubusercontent.com/77620549/211453137-ebe113c9-537f-4152-be9d-2334308c7cd5.png)
 
-
-Terima kasih !
-silahkan fork project ini bila perlu ya
-jangan lupa berikan bintang di repository ini dan juga follow github saya !
+Thank you!
+please fork this project if necessary
+don't forget to star this repository and also follow my github!
 
 ## Documentation
 
