@@ -5,7 +5,7 @@ please follow these steps:
 
 1. Clone this project
 2. Create a new database
-3. Import the database in the database folder
+3. Import the database.sql
 4. Setting the database in the config.php file
 5. Setting the base url in the config.php file
 6. Setting the email in the config.php file
