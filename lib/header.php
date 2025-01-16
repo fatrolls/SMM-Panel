@@ -21,7 +21,6 @@ require 'csrf_token.php';
 		<link href="<?php echo $config['web']['base_url'] ?>assets/css/style.css" rel="stylesheet" type="text/css" />
 		<script src="<?php echo $config['web']['base_url'] ?>assets/js/modernizr.min.js"></script>
 		<script src="<?php echo $config['web']['base_url'] ?>assets/js/jquery.min.js"></script>
-		<script src="<?php echo $config['web']['base_url'] ?>assets/js/"></script>
 		<script src="<?php echo $config['web']['base_url'] ?>assets/js/popper.min.js"></script>
 		<script src="<?php echo $config['web']['base_url'] ?>assets/js/bootstrap.min.js"></script>
 		<script src="<?php echo $config['web']['base_url'] ?>assets/js/waves.js"></script>

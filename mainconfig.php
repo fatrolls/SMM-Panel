@@ -40,6 +40,12 @@ $config['db'] = array(
 	'username' => 'username',
 	'password' => 'password'
 );
+
+$config['recaptcha'] = array(
+	'public_key' => '6LdNArkqAAAAANvYwq_6kV4sjkCz_L1nfa9on2Nr',
+	'private_key' => '6LdNArkqAAAAAM2Nksb7xLuLEMlPX-hTXwS73YMN'
+);
+
 /* END - CONFIG */
 
 require 'lib/db.php';
